@@ -46,3 +46,11 @@ services:
     environment: 
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+  react-tests:
+    build:
+      dockerfile: Dockerfile.dev 
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app        
+    command: ["npm", "run", "test"]  
